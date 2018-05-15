@@ -1,0 +1,29 @@
+<html>
+<head>
+	<title>Counting</title>
+	
+</head>
+<body>
+	<p id="demo"></p>
+
+
+<script>
+	var obj1=
+{"Name":"Akash","Age":22};
+
+var obj2=
+{"Address":"Indore","Class":20};
+
+
+for(var val in obj2){
+obj1[val]=obj2[val];
+}
+//document.getElementById("demo").innerHTML=JSON.stringify(obj3);
+
+document.getElementById("demo").innerHTML=JSON.stringify(obj1);
+
+
+</script>
+</body>
+
+</html>

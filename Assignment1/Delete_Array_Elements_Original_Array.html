@@ -1,0 +1,34 @@
+<html>
+<head>
+	<title>Counting</title>
+	
+</head>
+<body>
+	
+	Index:  <input type="Number" id="team"> <br>
+	<button type="button" onclick="myFunction()">Click it</button>
+	<p id="demo"></p>
+	<p id="demo1"></p>
+<script>
+
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML=fruits +"<br> After Element Deletion";
+
+
+function myFunction()
+{
+	var index;
+	index=document.getElementById("team").value;
+	index=index-1;
+	delete fruits[index];
+	document.getElementById("demo1").innerHTML=fruits;
+
+}
+ 
+
+
+
+</script>
+</body>
+
+</html>
