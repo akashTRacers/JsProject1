@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title>Add-Delete</title>
+	
+</head>
+<body>
+<p id="demo"></p>
+
+<script>
+var obj1=
+{"Name":"Akash","Age":22,"Address":"Indore","Class":20};
+var choice = prompt("If you want to add key enter 'add' else 'delete' ", " ");
+
+switch(choice){
+			case "add":
+					var key = prompt("Please enter Key", " ");
+					var value = prompt("Please enter value", " ");
+					obj1[key] = value;
+
+					document.getElementById("demo").innerHTML=JSON.stringify(obj1);
+					break;
+			case "delete":
+					var key = prompt("Please enter Key, you want to delete", " ");
+					delete obj1[key];
+					document.getElementById("demo").innerHTML=JSON.stringify(obj1);
+					break;
+			default: 
+					var key = prompt("Invalid Choice");
+
+
+
+}
+
+
+
+</script>
+</body>
+</html>
