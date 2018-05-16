@@ -1,3 +1,8 @@
+<!--input: { "flatJSON": false, "i": { "am": { "not": { "so": { "flat": true, "unflat": false } }, "a": "tree" } }, "dates": [ { "day": 1 }, { "day": 8947 } ] },
+
+output: { "flatJSON": false, "i.am.not.so.flat": true, "i.am.not.so.unflat": false, "i.am.a": "tree", "dates.0.day": 1, "dates.1.day": 8947 } -->
+
+
 <html>
 <head>
 	<title>Add-Delete</title>
@@ -19,8 +24,7 @@ function flattenObject(ob) {
     if (!ob.hasOwnProperty(i)) {
       continue;
     }
-    //Exclude arrays from the final result
-    //Check this http://stackoverflow.com/questions/4775722/check-if-object-is-array
+    
     if(ob[i] && Array === ob[i].constructor){
     	continue;
     }
@@ -29,3 +33,21 @@ function flattenObject(ob) {
       for (let x in flatObject) {
         if (!flatObject.hasOwnProperty(x)) {
           continue;
+        }
+        //Exclude arrays from the final result
+        if(flatObject[x] && Array === flatObject.constructor){
+        	continue;
+        }
+        toReturn[i + (!!isNaN(x) ? '.' + x : '')] = flatObject[x];
+      }
+    } else {
+      toReturn[i] = ob[i];
+    }
+  }
+  return toReturn;
+}
+
+document.getElementById("demo").innerHTML=JSON.stringify(value);
+</script>
+</body>
+</html>
