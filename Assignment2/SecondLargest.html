@@ -1,0 +1,43 @@
+<html>
+<head>
+	<title>Add-Delete</title>
+	
+</head>
+<body>
+<p id="demo"></p>
+
+<script>
+
+ var array1=[3,56,7,32,9,14];   
+var secondmax=secondLargest(array1);
+
+
+  function secondLargest(array) {
+  var i;
+  var first, second;
+  console.log("level1");
+
+  console.log("level2");
+        first=second=-1;
+        for(i=0;i<array.length;i++)
+        {
+            if(array[i]>first)
+            {
+               second=first; 
+               first=array[i]; 
+                
+            }
+            else if((array[i]>second)&&(first!=array[i]))   
+             {
+                   second=array[i];
+             }
+                    
+                    
+         }
+  console.log("level2");
+  return(second);
+
+}
+document.getElementById("demo").innerHTML=secondmax;
+
+</script>
