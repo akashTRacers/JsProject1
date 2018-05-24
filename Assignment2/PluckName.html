@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title>Add-Delete</title>
+	
+</head>
+<body>
+<p id="demo"></p>
+
+<script>
+
+ var array1= [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}]; 
+var arr1=pluckName(array1);
+
+function pluckName(unpluckedArray) {
+  var size,i;
+  var arr1=[];
+  size=unpluckedArray.length;
+  console.log(size);
+  for(i=0;i<size;i++){
+    if(unpluckedArray[i].name!=undefined)
+  arr1.push(unpluckedArray[i].name);
+  }
+  console.log(arr1);
+  return arr1;
+}
+document.getElementById("demo").innerHTML=arr1;
+
+</script>

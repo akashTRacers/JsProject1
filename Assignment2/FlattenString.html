@@ -1,0 +1,53 @@
+<!--input: { "flatJSON": false, "i": { "am": { "not": { "so": { "flat": true, "unflat": false } }, "a": "tree" } }, "dates": [ { "day": 1 }, { "day": 8947 } ] },
+
+output: { "flatJSON": false, "i.am.not.so.flat": true, "i.am.not.so.unflat": false, "i.am.a": "tree", "dates.0.day": 1, "dates.1.day": 8947 } -->
+
+
+<html>
+<head>
+	<title>Add-Delete</title>
+	
+</head>
+<body>
+<p id="demo"></p>
+
+<script type="text/javascript">
+
+var ob={ "flatJSON": false, "i": { "am": { "not": { "so": { "flat": true, "unflat": false } }, "a": "tree" } }, "dates": [ { "day": 1 }, { "day": 8947 } ] };
+
+var value= flatten(ob); 
+function flatten(ob) {
+  let toReturn = {};
+  let flatObject;
+  for (let i in ob) {
+  	console.log(i+ ' ' + typeof(ob[i]));
+    if (!ob.hasOwnProperty(i)) {
+      continue;
+    }
+    
+    // if(ob[i] && Array === ob[i].constructor){
+    // 	continue;
+    // }
+    if ((typeof ob[i]) === 'object') {
+      flatObject = flatten(ob[i]);
+      for (let x in flatObject) {
+        if (!flatObject.hasOwnProperty(x)) {
+          continue;
+        }
+        //Exclude arrays from the final result
+        if(flatObject[x] && Array === flatObject.constructor){
+        	continue;
+        }
+        toReturn[i + (!!isNaN(x) ? '.' + x : '')] = flatObject[x];
+      }
+    } else {
+      toReturn[i] = ob[i];
+    }
+  }
+  return toReturn;
+}
+
+document.getElementById("demo").innerHTML=JSON.stringify(value);
+</script>
+</body>
+</html>
